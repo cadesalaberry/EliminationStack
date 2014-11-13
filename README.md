@@ -19,4 +19,71 @@ Where `p > 1` represents the number of threads to use, `d > 0` represents the up
 
 As output, The program (single-threadedly) emits a time in milliseconds measuring the entire concurrent simulation on one line. A second line of output contains three numbers separated by spaces: the first value is the total number of pushes done by all threads, the second the total number of successful pops done by all threads, and the third the total number of number of nodes remaining in the stack.
 
-For each of `p ∈ 2, 4, 8, 16` what values/combination(s) of `e` and `t` usually works best? Note that we do not need to test all combinations(!), but we do need to provide a clear, numerical justification for answers, including performance graph(s) as appropriate, and your textual argument/explanation (as a separate file).
+=======
+
+# Notes
+
+
+For each of `p ∈ 2, 4, 8, 16` what values/combination(s) of `e` and `t` usually works best? Note that we do not need to test all combinations(!), but we do need to provide a clear, numerical justification for answers, including performance graph(s) as appropriate.
+
+| p  | d | n    | t  | e   | Total Time (ms) | 
+|----|---|------|----|-----|-----------------| 
+| 2  | 5 | 1500 | 0  | 20  | 3218            | 
+| 2  | 5 | 1500 | 0  | 40  | 3199            | 
+| 2  | 5 | 1500 | 0  | 80  | 3239            | 
+| 2  | 5 | 1500 | 0  | 160 | 3184            | 
+| 2  | 5 | 1500 | 0  | 320 | 3414            | 
+| 2  | 5 | 1500 | 0  | 640 | 3281            | 
+|    |   |      |    |     |                 | 
+| 2  | 5 | 1500 | 2  | 160 | 3465            | 
+| 2  | 5 | 1500 | 4  | 160 | 3435            | 
+| 2  | 5 | 1500 | 8  | 160 | 3776            | 
+| 2  | 5 | 1500 | 16 | 160 | 4008            | 
+| 2  | 5 | 1500 | 32 | 160 | 4031            | 
+| 2  | 5 | 1500 | 64 | 160 | 4338            | 
+|    |   |      |    |     |                 | 
+| 4  | 5 | 1500 | 0  | 20  | 3318            | 
+| 4  | 5 | 1500 | 0  | 40  | 3307            | 
+| 4  | 5 | 1500 | 0  | 80  | 3237            | 
+| 4  | 5 | 1500 | 0  | 160 | 3238            | 
+| 4  | 5 | 1500 | 0  | 320 | 3195            | 
+| 4  | 5 | 1500 | 0  | 640 | 3274            | 
+|    |   |      |    |     |                 | 
+| 4  | 5 | 1500 | 2  | 320 | 3670            | 
+| 4  | 5 | 1500 | 4  | 320 | 3929            | 
+| 4  | 5 | 1500 | 8  | 320 | 4075            | 
+| 4  | 5 | 1500 | 16 | 320 | 4318            | 
+| 4  | 5 | 1500 | 32 | 320 | 4329            | 
+| 4  | 5 | 1500 | 64 | 320 | 4464            | 
+|    |   |      |    |     |                 | 
+| 8  | 5 | 1500 | 0  | 20  | 3308            | 
+| 8  | 5 | 1500 | 0  | 40  | 3240            | 
+| 8  | 5 | 1500 | 0  | 80  | 3207            | 
+| 8  | 5 | 1500 | 0  | 160 | 3217            | 
+| 8  | 5 | 1500 | 0  | 320 | 3251            | 
+| 8  | 5 | 1500 | 0  | 640 | 3213            | 
+|    |   |      |    |     |                 | 
+| 8  | 5 | 1500 | 2  | 160 | 3858            | 
+| 8  | 5 | 1500 | 4  | 160 | 4017            | 
+| 8  | 5 | 1500 | 8  | 160 | 4206            | 
+| 8  | 5 | 1500 | 16 | 160 | 4482            | 
+| 8  | 5 | 1500 | 32 | 160 | 4817            | 
+| 8  | 5 | 1500 | 64 | 160 | 6302            | 
+|    |   |      |    |     |                 | 
+| 16 | 5 | 1500 | 0  | 20  | 3258            | 
+| 16 | 5 | 1500 | 0  | 40  | 3203            | 
+| 16 | 5 | 1500 | 0  | 80  | 3234            | 
+| 16 | 5 | 1500 | 0  | 160 | 3232            | 
+| 16 | 5 | 1500 | 0  | 320 | 3251            | 
+| 16 | 5 | 1500 | 0  | 640 | 3277            | 
+|    |   |      |    |     |                 | 
+| 16 | 5 | 1500 | 2  | 160 | 3876            | 
+| 16 | 5 | 1500 | 4  | 160 | 4025            | 
+| 16 | 5 | 1500 | 8  | 160 | 4290            | 
+| 16 | 5 | 1500 | 16 | 160 | 4296            | 
+| 16 | 5 | 1500 | 32 | 160 | 4590            | 
+| 16 | 5 | 1500 | 64 | 160 | 5091            | 
+
+
+
+> Let's use `t` and `e` as key variables. When the timeout factor (`t`) is increased, the total processing time increases **a lot**. Reducing its value leads to way more acceptable time. It makes sense for if a thread is blocked, it will wait a random amount of time, capped by `t`. On average, it will add `t/2` to the total processing time
