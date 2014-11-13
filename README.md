@@ -19,10 +19,8 @@ Where `p > 1` represents the number of threads to use, `d > 0` represents the up
 
 As output, The program (single-threadedly) emits a time in milliseconds measuring the entire concurrent simulation on one line. A second line of output contains three numbers separated by spaces: the first value is the total number of pushes done by all threads, the second the total number of successful pops done by all threads, and the third the total number of number of nodes remaining in the stack.
 
-=======
 
 # Notes
-
 
 For each of `p ∈ 2, 4, 8, 16` what values/combination(s) of `e` and `t` usually works best? Note that we do not need to test all combinations(!), but we do need to provide a clear, numerical justification for answers, including performance graph(s) as appropriate.
 
