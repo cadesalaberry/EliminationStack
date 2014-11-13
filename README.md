@@ -26,6 +26,9 @@ As output, The program (single-threadedly) emits a time in milliseconds measurin
 
 For each of `p ∈ 2, 4, 8, 16` what values/combination(s) of `e` and `t` usually works best? Note that we do not need to test all combinations(!), but we do need to provide a clear, numerical justification for answers, including performance graph(s) as appropriate.
 
+> Let's use `t` and `e` as key variables. When the timeout factor (`t`) is increased, the total processing time increases **a lot**. Reducing its value leads to way more acceptable time. It makes sense for if a thread is blocked, it will wait a random amount of time, capped by `t`. On average, it will add `t/2` to the total processing time
+
+
 | p  | d | n    | t  | e   | Total Time (ms) | 
 |----|---|------|----|-----|-----------------| 
 | 2  | 5 | 1500 | 0  | 20  | 3218            | 
@@ -83,7 +86,3 @@ For each of `p ∈ 2, 4, 8, 16` what values/combination(s) of `e` and `t` usuall
 | 16 | 5 | 1500 | 16 | 160 | 4296            | 
 | 16 | 5 | 1500 | 32 | 160 | 4590            | 
 | 16 | 5 | 1500 | 64 | 160 | 5091            | 
-
-
-
-> Let's use `t` and `e` as key variables. When the timeout factor (`t`) is increased, the total processing time increases **a lot**. Reducing its value leads to way more acceptable time. It makes sense for if a thread is blocked, it will wait a random amount of time, capped by `t`. On average, it will add `t/2` to the total processing time
