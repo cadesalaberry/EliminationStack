@@ -19,6 +19,13 @@ Where `p > 1` represents the number of threads to use, `d > 0` represents the up
 
 As output, The program (single-threadedly) emits a time in milliseconds measuring the entire concurrent simulation on one line. A second line of output contains three numbers separated by spaces: the first value is the total number of pushes done by all threads, the second the total number of successful pops done by all threads, and the third the total number of number of nodes remaining in the stack.
 
+# Sample Output
+
+```bash
+$ java EliminationStack 2 10 1000 0 100
+4765
+1008 992 16
+```
 
 # Remarks
 
