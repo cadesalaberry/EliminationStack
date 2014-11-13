@@ -24,7 +24,9 @@ As output, The program (single-threadedly) emits a time in milliseconds measurin
 
 For each of `p ∈ 2, 4, 8, 16` what values/combination(s) of `e` and `t` usually works best? Note that we do not need to test all combinations(!), but we do need to provide a clear, numerical justification for answers, including performance graph(s) as appropriate.
 
-> Let's use `t` and `e` as key variables. When the timeout factor (`t`) is increased, the total processing time increases **a lot**. Reducing its value leads to way more acceptable time. It makes sense for if a thread is blocked, it will wait a random amount of time, capped by `t`. On average, it will add `t/2` to the total processing time
+> Let's use `t` and `e` as key variables. When the timeout factor (`t`) is increased, the total processing time increases **a lot**. Reducing its value leads to way more acceptable time. It makes sense for if a thread is blocked, it will wait a random amount of time, capped by `t`. On average, it will add `t/2` to the total processing time per times a thread is blocked.
+
+> We can see in the table, that the size of the elimination array does not really matter; It is also surprising to see that the number of thread does not severly impact the timing. It shows that the implementation is pretty well done, not adding too much overhead in computation when adding more thread.
 
 
 | p  | d | n    | t  | e   | Total Time (ms) | 
